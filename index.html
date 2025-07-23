@@ -167,42 +167,57 @@
   <button onclick="calculate()">Oblicz</button>
 
   <div id="result">
-    <p><strong>Montaż:</strong> <span id="montaz">0 zł</span></p>
-    <p><strong>Demontaż:</strong> <span id="demontaz">0 zł</span></p>
-  </div>
+  <p><strong>Montaż:</strong> <span id="montaz">0 zł</span></p>
+  <p><strong>Demontaż:</strong> <span id="demontaz">0 zł</span></p>
+  <p><strong>Demontaż bez %:</strong> <span id="demontazBezRabatu">0 zł</span></p>
+</div>
+
 
   <script>
   function calculate() {
     let totalMontaz = 0;
     let totalDemontaz = 0;
+    let totalDemontazBezRabatu = 0;
 
     const carPrice = parseFloat(document.getElementById('carPrice').value) || 0;
     const bodyPrice = parseFloat(document.getElementById('bodyPrice').value) || 0;
 
     // Ulepszenia - checkboxy
     document.querySelectorAll('.upgrade:checked').forEach(cb => {
-      totalMontaz += parseFloat(cb.dataset.montaz);
-      totalDemontaz += parseFloat(cb.dataset.demontaz);
+      const montaz = parseFloat(cb.dataset.montaz);
+      const demontaz = parseFloat(cb.dataset.demontaz);
+      totalMontaz += montaz;
+      totalDemontaz += demontaz;
+      totalDemontazBezRabatu += demontaz;
     });
 
     // Ulepszenia - selecty
     const selectIds = ['nitro', 'fuelTank', 'engine', 'cylinders', 'licznik'];
     selectIds.forEach(id => {
       const selectedOption = document.getElementById(id).selectedOptions[0];
-      totalMontaz += parseFloat(selectedOption.dataset.montaz || 0);
-      totalDemontaz += parseFloat(selectedOption.dataset.demontaz || 0);
+      const montaz = parseFloat(selectedOption.dataset.montaz || 0);
+      const demontaz = parseFloat(selectedOption.dataset.demontaz || 0);
+      totalMontaz += montaz;
+      totalDemontaz += demontaz;
+      totalDemontazBezRabatu += demontaz;
     });
 
     // Montaż uwzględnia oryginalną cenę auta i body
     totalMontaz += carPrice + bodyPrice;
 
-    // Demontaż uwzględnia rabatowane wartości auta i body
+    // Demontaż z rabatami
     totalDemontaz += carPrice * 0.8 + bodyPrice * 0.5;
 
+    // Demontaż bez rabatów (pełne kwoty auta i body)
+    totalDemontazBezRabatu += carPrice + bodyPrice;
+
+    // Wyświetlenie wyników
     document.getElementById("montaz").textContent = totalMontaz.toFixed(2) + " zł";
     document.getElementById("demontaz").textContent = totalDemontaz.toFixed(2) + " zł";
+    document.getElementById("demontazBezRabatu").textContent = totalDemontazBezRabatu.toFixed(2) + " zł";
   }
 </script>
+
 
 </body>
 </html>
