@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>21.Corporation - Kalkulator</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 2px solid #8B0000;
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #8B0000;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    input[type="number"], select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #8B0000;
+      border-radius: 4px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #8B0000;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      background-color: #111;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #8B0000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>21.Corporation</h1>
+
+  <div class="section">
+    <label for="carPrice">Kwota auta:</label>
+    <input type="number" id="carPrice" placeholder="Wpisz kwotę auta">
+  </div>
+
+  <div class="section">
+    <label for="bodyPrice">Kwota body:</label>
+    <input type="number" id="bodyPrice" placeholder="Wpisz kwotę body">
+  </div>
+
+  <div class="section">
+    <h3>Ulepszenia Mechaniczne:</h3>
+    <label><input type="checkbox" class="upgrade" data-montaz="300000" data-demontaz="65000"> US1 (300000/65000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="400000" data-demontaz="100000"> US2 (400000/100000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="500000" data-demontaz="185000"> US3 (500000/185000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="1300000" data-demontaz="350000"> US4 (1300000/350000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="700000" data-demontaz="150000"> Turbosprężarka (700000/150000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="800000" data-demontaz="200000"> Chip Tuning (800000/200000 PLN)</label>
+  </div>
+
+  <div class="section">
+    <h3>Ulepszenia Konfig:</h3>
+    <label><input type="checkbox" class="upgrade" data-montaz="2000000" data-demontaz="1000000"> Regulacja Mocy (2000000/1000000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="2000000" data-demontaz="50000"> Regulacja Trakcji (2000000/50000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="500000" data-demontaz="100000"> Regulacja Hamulców (500000/100000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="500000" data-demontaz="100000"> Regulacja Masy (500000/100000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="3000" data-demontaz="1500"> Gwintowane Zawieszenie (150000/75000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="3000" data-demontaz="1500"> Regulacja Kątu Skrętu (1000000/200000 PLN)</label>
+
+  </div>
+
+  <div class="section">
+    <h3>Ulepszenia Wizualne:</h3>
+    <label><input type="checkbox" class="upgrade" data-montaz="1500000" data-demontaz="1400000"> Przyciemnione Szyby (1500000/1400000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="1500000" data-demontaz="1400000"> Przyciemnione Lampy (1500000/1400000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="2000000" data-demontaz="1000000"> Lacze Przód (2000000/1000000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="2000000" data-demontaz="1000000"> Lacze Tył (2000000/1000000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="2000000" data-demontaz="1000000"> RGB (2000000/1000000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="12500000" data-demontaz="7000000"> PaintJob (12500000/7000000 PLN)</label>
+  </div>
+
+  <div class="section">
+    <h3>Pozostałe:</h3>
+    <label><input type="checkbox" class="upgrade" data-montaz="150000" data-demontaz="75000"> LPG (150000/75000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="200000" data-demontaz="100000"> Napęd (200000/100000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="2500000" data-demontaz="1250000"> Taxo (2500000/1250000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="550000" data-demontaz="250000"> Neony (550000/250000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="650000" data-demontaz="300000"> Licznik Driftu (650000/300000 PLN)</label>
+    <label><input type="checkbox" class="upgrade" data-montaz="1000000" data-demontaz="500000"> ABS (1000000/500000 PLN)</label>
+  </div>
+
+  <div class="section">
+    <h3>Dodatkowe opcje:</h3>
+    <label>Nitro:
+      <select id="nitro">
+        <option value="0">Brak</option>
+        <option value="50000000" data-montaz="50000000" data-demontaz="45000000"> 5L (50000000/45000000 PLN)</option>
+        <option value="60000000" data-montaz="60000000" data-demontaz="50000000"> 10L (60000000/50000000 PLN) </option>
+        <option value="60000000" data-montaz="60000000" data-demontaz="55000000"> 15L (70000000/55000000 PLN) </option>
+      </select>
+    </label>
+    <label>Bak paliwa:
+      <select id="fuelTank">
+        <option value="0" data-montaz="0" data-demontaz="0"> Bak 25L (0 PLN) </option>
+        <option value="250000" data-montaz="250000" data-demontaz="100000">Bak 50L (250000/100000 PLN) </option>
+        <option value="500000" data-montaz="500000" data-demontaz="200000">Bak 75L (500000/200000 PLN) </option>
+        <option value="750000" data-montaz="750000" data-demontaz="300000">Bak 100L (750000/300000 PLN) </option>
+      </select>
+    </label>
+    <label>Pojemność silnika:
+      <select id="engine">
+        <option value="0" data-montaz="0" data-demontaz="0"> 1.4 (0 PLN)</option>
+        <option value="440000" data-montaz="440000" data-demontaz="100000">1.6 (440000/100000 PLN)</option>
+        <option value="660000" data-montaz="660000" data-demontaz="100000">1.8 (660000/150000 PLN)</option>
+        <option value="1100000"data-montaz="1100000"data-demontaz="200000">2.0 (1100000/200000 PLN)</option>
+        <option value="1320000"data-montaz="1320000"data-demontaz="250000">2.2 (1320000/250000 PLN)</option>
+        <option value="1540000"data-montaz="1540000"data-demontaz="300000">2.4 (1540000/300000 PLN)</option>
+        <option value="1760000"data-montaz="1760000"data-demontaz="350000">2.6 (1760000/350000 PLN)</option>
+        <option value="1980000"data-montaz="1980000"data-demontaz="400000">2.8 (1980000/400000 PLN)</option>
+        <option value="2200000"data-montaz="2200000"data-demontaz="450000">3.0 (2200000/450000 PLN)</option>
+      </select>
+    </label>
+    <label>Cylindry:
+      <select id="cylinders">
+        <option value="0" data-montaz="0" data-demontaz="0">V4 (0 PLN) </option>
+        <option value="500000" data-montaz="500000" data-demontaz="150000">V6 (500000/150000 PLN) </option>
+        <option value="750000" data-montaz="750000" data-demontaz="225000">V8 (750000/225000 PLN) </option>
+      </select>
+    </label>
+    <label>Licznik:
+      <select id="licznik">
+        <option value="0" data-montaz="0" data-demontaz="0">Licznik 1 (0 PLN) </option>
+        <option value="500000" data-montaz="100000" data-demontaz="250000">Licznik 2 (500000/250000 PLN) </option>
+        <option value="400000" data-montaz="400000" data-demontaz="200000">Licznik 3 (400000/200000 PLN) </option>
+        <option value="1000000"data-montaz="1000000"data-demontaz="500000">Licznik 4 (1000000/500000 PLN) </option>
+        <option value="1000000"data-montaz="1000000"data-demontaz="500000">Licznik 5 (1000000/500000 PLN) </option>
+      </select>
+    </label>
+  </div>
+
+  <button onclick="calculate()">Oblicz</button>
+
+  <div id="result">
+    <p><strong>Montaż:</strong> <span id="montaz">0 zł</span></p>
+    <p><strong>Demontaż:</strong> <span id="demontaz">0 zł</span></p>
+  </div>
+
+  <script>
+  function calculate() {
+    let totalMontaz = 0;
+    let totalDemontaz = 0;
+
+    const carPrice = parseFloat(document.getElementById('carPrice').value) || 0;
+    const bodyPrice = parseFloat(document.getElementById('bodyPrice').value) || 0;
+
+    // Ulepszenia - checkboxy
+    document.querySelectorAll('.upgrade:checked').forEach(cb => {
+      totalMontaz += parseFloat(cb.dataset.montaz);
+      totalDemontaz += parseFloat(cb.dataset.demontaz);
+    });
+
+    // Ulepszenia - selecty
+    const selectIds = ['nitro', 'fuelTank', 'engine', 'cylinders', 'licznik'];
+    selectIds.forEach(id => {
+      const selectedOption = document.getElementById(id).selectedOptions[0];
+      totalMontaz += parseFloat(selectedOption.dataset.montaz || 0);
+      totalDemontaz += parseFloat(selectedOption.dataset.demontaz || 0);
+    });
+
+    // Montaż uwzględnia oryginalną cenę auta i body
+    totalMontaz += carPrice + bodyPrice;
+
+    // Demontaż uwzględnia rabatowane wartości auta i body
+    totalDemontaz += carPrice * 0.8 + bodyPrice * 0.5;
+
+    document.getElementById("montaz").textContent = totalMontaz.toFixed(2) + " zł";
+    document.getElementById("demontaz").textContent = totalDemontaz.toFixed(2) + " zł";
+  }
+</script>
+
+</body>
+</html>
